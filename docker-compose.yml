@@ -1,0 +1,32 @@
+services:
+  api:
+    build:
+      context: ./backend
+    ports:
+      - "${API_PORT}:8000"
+    env_file:
+      - .env
+    volumes:
+      - C:/Users/pooji/Downloads/effortless-cat-461509-s6-5264c96ad5bc.json:/app/credentials.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  ui:
+    build:
+      context: ./frontend
+    ports:
+      - "${UI_PORT}:8501"
+    env_file:
+      - .env
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s

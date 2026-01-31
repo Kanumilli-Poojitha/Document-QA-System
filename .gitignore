@@ -1,0 +1,43 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Docker
+*.pid
+
+# Uploaded / generated files
+exports/
+uploads/
+
+# Credentials
+*.json
+
+# Streamlit cache
+.streamlit/
+
+# Test cache
+.pytest_cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
