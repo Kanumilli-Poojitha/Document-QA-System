@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-multipart
+PyPDF2
+python-docx
+fpdf2
+google-genai>=0.13.0
+pydantic
