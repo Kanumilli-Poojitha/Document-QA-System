@@ -224,6 +224,7 @@ Demo video
 
 https://youtu.be/oYoeA4Cdq4E
 
+------
 
 commands used in demo:
 
@@ -250,9 +251,9 @@ GET http://localhost:8000/session/session-uuid
 
 GET /session/{session_id}/export
 
-
-
 http://localhost:8501
+
+-----
 
 👩‍💻 Author
 
