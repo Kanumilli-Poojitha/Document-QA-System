@@ -127,11 +127,14 @@ def ask_question(request: AskRequest):
 @app.get("/session/{session_id}")
 def get_conversation(session_id: str):
     messages = get_session(session_id)
+    # Return both `history` (as required by the spec) and `messages`
+    # (kept for backward compatibility with the frontend).
     if messages is None:
         raise HTTPException(status_code=404, detail="Session not found")
 
     return {
         "session_id": session_id,
+        "history": messages,
         "messages": messages
     }
 
@@ -165,11 +168,11 @@ def export_session_pdf(session_id: str):
         pdf.multi_cell(0, 8, text)
         pdf.ln(2)
 
-    export_path = os.path.join(EXPORT_DIR, f"{session_id}.pdf")
+    export_path = os.path.join(EXPORT_DIR, f"session_{session_id}.pdf")
     pdf.output(export_path)
 
     return FileResponse(
         export_path,
-        filename=f"{session_id}.pdf",
+        filename=f"session_{session_id}.pdf",
         media_type="application/pdf"
     )
